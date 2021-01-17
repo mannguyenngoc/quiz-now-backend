@@ -1,0 +1,42 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Man Nguyen\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add jsonwebtoken express-jwt
+
+PATH: 
+  C:\Program Files\AdoptOpenJDK\jdk-8.0.265.01-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\Git\bin\;C:\Users\Man Nguyen\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Python 3.7;D:\study from e\Study\Heroku\bin;C:\Windows\System32;D:\Genymotion\Genymotion\tools;C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin;C:\Users\Man Nguyen\AppData\Local\Programs\Python\Python37\Scripts\;C:\Users\Man Nguyen\AppData\Local\Programs\Python\Python37\;C:\Users\Man Nguyen\AppData\Local\Microsoft\WindowsApps;C:\Users\Man Nguyen\AppData\Roaming\npm;C:\Program Files\nodejs;D:\study from e\Study\Heroku\bin;D:\Software\VSCode\Microsoft VS Code\bin;C:\Users\Man Nguyen\AppData\Local\Android\Sdk\platform-tools;D:\study from e\Study\Coding folder\Flutter\flutter\bin;C:\Users\Man Nguyen\AppData\Local\GitHubDesktop\bin
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  12.18.3
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'D:\study from e\Study\Coding folder\Angular\mini-project\backend\node_modules\bcrypt\lib\binding\napi-v3\bcrypt_lib.node'
+
+npm manifest: 
+  {
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "start": "nodemon index.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "bcrypt": "^5.0.0",
+      "express": "^4.17.1",
+      "nodemon": "^2.0.7"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
