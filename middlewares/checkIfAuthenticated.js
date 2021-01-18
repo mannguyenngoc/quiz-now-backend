@@ -7,18 +7,21 @@ const SECRET_KEY = "hello-jwt";
 const checkIfAuthenticated = (req, res, next) => {
   const token = req.headers.authorization;
 
-  if (token) jwt.verify(token, SECRET_KEY, function (err, decoded) {
+  if (token)
+    jwt.verify(token, SECRET_KEY, function (err, decoded) {
       if (err) {
-          console.log(err);
+        console.log(err);
       }
-      const {userID} = decoded; 
-      
-      User.findOne({_id: userID}, function (err, user) {
-        if (user) {
-          next();
-        } else res.redirect('back')
-      })
-  });
+      if (decoded) {
+        const { userID } = decoded;
+
+        User.findOne({ _id: userID }, function (err, user) {
+          if (user) {
+            next();
+          } else res.redirect("back");
+        });
+      }
+    });
 };
 
 module.exports = checkIfAuthenticated;
