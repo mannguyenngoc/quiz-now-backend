@@ -1,8 +1,6 @@
 const User = require("../models/User.model");
 
-const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
-const expressJwt = require("express-jwt");
 
 const hashPassword = require("../../functions/hashPassword");
 const comparePassword = require("../../functions/comparePassword");
@@ -72,7 +70,8 @@ module.exports.userLogin = (req, res) => {
           message: "Login successfully",
           token: token,
           expiresIn: "3600000",
-          username: username
+          username: username,
+          name: user.name,
         });
 
       } else {

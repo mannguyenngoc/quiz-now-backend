@@ -8,6 +8,8 @@ const cors = require('cors');
 
 // routes
 const userRoutes = require("./server/routes/user.route");
+const bankRoutes = require("./server/routes/bank.route");
+const testRoutes = require('./server/routes/test.route');
 
 const checkIfAuthenticated = require('./middlewares/checkIfAuthenticated');
 
@@ -22,6 +24,8 @@ app.use(cors());
 
 // using routes
 app.use("/api/user", userRoutes);
+app.use("/bank", bankRoutes);
+app.use("/test", testRoutes);
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection
