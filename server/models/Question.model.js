@@ -7,7 +7,7 @@ const QuestionSchema = new Schema({
     level: String,
     isManyAnswers: Boolean,
     // id bank
-    bank: String
+    idBank: String
 })
 
 module.exports = mongoose.model('Question', QuestionSchema);

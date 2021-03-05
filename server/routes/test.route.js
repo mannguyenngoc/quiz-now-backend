@@ -4,9 +4,13 @@ const router = express.Router();
 const controller = require('../controllers/test.controller');
 const checkIfAuthenticated = require('../../middlewares/checkIfAuthenticated');
 
-router.get('/', checkIfAuthenticated, controller.allTest);
+router.post('/', checkIfAuthenticated, controller.allTest);
+router.get('/page/:idBank', checkIfAuthenticated, controller.getPage);
+router.get('/detail/:idTest', checkIfAuthenticated, controller.detailTest);
 router.post('/create', checkIfAuthenticated, controller.createTest);
 router.get('/access/:shortId', checkIfAuthenticated, controller.accessTest);
-// router.get('/detail/:id', checkIfAuthenticated, controller.detailTest);
+router.post('/submit', checkIfAuthenticated, controller.submitTest);
+router.post('/check/code', checkIfAuthenticated, controller.checkCode);
+router.post('/question', checkIfAuthenticated, controller.getOneQuestionInTest);
 
 module.exports = router;

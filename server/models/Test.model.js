@@ -6,16 +6,13 @@ const TestSchema = new Schema({
     code: String,
     link: String,
     title: String,
-    requiredName: Boolean,
-    requiredMsv: Boolean,
+    requireInfo: Array,
     knowTheResult: Boolean,
     numberOfEasyQuestions: Number,
     numberOfNormalQuestions: Number,
     numberOfHardQuestions: Number,
     time: Number,
-    owner: String,
     source: String,
-    listUserTake: String,
 })
 
 module.exports = mongoose.model('Test', TestSchema);

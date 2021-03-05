@@ -11,15 +11,15 @@ const checkIfAuthenticated = (req, res, next) => {
     jwt.verify(token, SECRET_KEY, function (err, decoded) {
       if (err) {
         console.log('expired');
+        res.redirect('/');
       }
       if (decoded) {
         const { userID } = decoded;
-
         User.findOne({ _id: userID }, function (err, user) {
           if (user) {
             req.userId = userID;
             next();
-          } else res.redirect("back");
+          } else res.redirect("/");
         });
       }
     });

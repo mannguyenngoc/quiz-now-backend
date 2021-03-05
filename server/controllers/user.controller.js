@@ -62,7 +62,7 @@ module.exports.userLogin = (req, res) => {
     if (user) {
       if (comparePassword(password, user.password)) {
         let token = jwt.sign({ userID: user._id }, "hello-jwt", {
-          expiresIn: "3600000",
+          expiresIn: "7200000",
         });
 
         res.status(200).send({

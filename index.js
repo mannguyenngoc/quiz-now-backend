@@ -4,14 +4,15 @@ const port = 3000;
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const url = "mongodb://localhost:27017/quiznow";
-const cors = require('cors');
+const cors = require("cors");
 
 // routes
 const userRoutes = require("./server/routes/user.route");
 const bankRoutes = require("./server/routes/bank.route");
-const testRoutes = require('./server/routes/test.route');
+const testRoutes = require("./server/routes/test.route");
+const resultRoutes = require("./server/routes/result.route");
 
-const checkIfAuthenticated = require('./middlewares/checkIfAuthenticated');
+const checkIfAuthenticated = require("./middlewares/checkIfAuthenticated");
 
 app.use(bodyParser.json());
 app.use(
@@ -26,6 +27,7 @@ app.use(cors());
 app.use("/api/user", userRoutes);
 app.use("/bank", bankRoutes);
 app.use("/test", testRoutes);
+app.use("/result", resultRoutes);
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection
@@ -34,11 +36,13 @@ mongoose.connection
     console.log("Error: ", error);
   });
 
+mongoose.set("useFindAndModify", false);
+
 app.get("/", checkIfAuthenticated, (req, res) => {
   res.status(200).send({
     isLogin: true,
-    message: "This request is authenticated"
-  })
+    message: "This request is authenticated",
+  });
 });
 
 app.listen(port, () => {

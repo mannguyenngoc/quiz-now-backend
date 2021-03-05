@@ -8,7 +8,7 @@ const UserSchema = new Schema({
     avatarUrl: String,
     msv: String,
     mail: String,
-    listOfResults: Array  
+    // listOfResults: Array  
 })
 
 module.exports = mongoose.model('User', UserSchema);

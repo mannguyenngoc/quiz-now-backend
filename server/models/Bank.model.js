@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 const BankSchema = new Schema({
     title: String,
     // id questions
-    questions: Array,
+    idQuestions: Array,
     // id test
-    test: Array,
+    idTests: Array,
     // id owner
-    owner: String
+    idOwner: String
 })
 
 module.exports = mongoose.model('Bank', BankSchema);
