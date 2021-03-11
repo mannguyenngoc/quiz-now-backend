@@ -4,6 +4,9 @@ const port = 3000;
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const url = "mongodb://localhost:27017/quiznow";
+// const url = "mongodb://database/quiznow";
+// const url = "mongodb://192.168.0.101:27017/quiznow";
+
 const cors = require("cors");
 
 // routes

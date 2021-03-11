@@ -6,7 +6,6 @@ const QuestionSchema = new Schema({
     answers: Array,
     level: String,
     isManyAnswers: Boolean,
-    // id bank
     idBank: String
 })
 

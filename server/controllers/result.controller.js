@@ -163,6 +163,7 @@ module.exports.analyzeWithScore = (req, res) => {
   let timestamp = new Date();
 
   timestamp = Date.parse(timestamp) - time * 3600 * 1000 * 24;
+
   Result.aggregate([
     {
       $match: {
@@ -206,7 +207,7 @@ module.exports.analyzeWithScore = (req, res) => {
       },
     },
   ]).exec((err, results) => {
-    console.log(results.length);
+    console.log(11, results);
     res.status(200).send({
       success: true,
       message: "[SUCCESS] Analyze results with score",
@@ -446,9 +447,9 @@ module.exports.getResultsByIdTest = (req, res) => {
       },
     },
   ]).exec((err, results) => {
-    const pages = Math.ceil(results.length / limitItem)
+    const pages = Math.ceil(results.length / limitItem);
 
-    results = results.slice((page - 1) * limitItem, limitItem * page)
+    results = results.slice((page - 1) * limitItem, limitItem * page);
     res.status(200).send({
       success: true,
       message: "[SUCCESS] Get results from id tests",

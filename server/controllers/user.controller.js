@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const hashPassword = require("../../functions/hashPassword");
 const comparePassword = require("../../functions/comparePassword");
 
+
 module.exports.postUser = (req, res) => {
   User.findOne({ username: req.body.username }).exec((err, user) => {
     try {
@@ -57,7 +58,6 @@ module.exports.postUser = (req, res) => {
 module.exports.userLogin = (req, res) => {
   // console.log(req.headers);
   const { username, password } = req.body;
-
   User.findOne({ username: username }).exec((err, user) => {
     if (user) {
       if (comparePassword(password, user.password)) {
