@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon -L index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "inspect": "kill-port --port 3000 && node --inspect=0.0.0.0:3000 build/startup.js",
+  "start_watch_inspect": "nodemon --delay 80ms --watch build/ build/startup.js --exec 'npm run inspect'",
   "author": "",
   "license": "ISC",
   "dependencies": {

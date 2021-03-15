@@ -27,5 +27,6 @@ RUN npm install
 
 EXPOSE 3000
 
-CMD ["nodemon", "/src/app/index.js"]
+# CMD ["nodemon", "/src/app/index.js"]
+CMD ["npm", "start"]
 

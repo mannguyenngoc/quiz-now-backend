@@ -44,9 +44,9 @@ module.exports.getOneBank = (req, res) => {
 
   Bank.findOne({ _id: id }).exec(async (err, bank) => {
     let bankRes = {};
-    var numberOfEasyQuestions = 0;
-    var numberOfNormalQuestions = 0;
-    var numberOfHardQuestions = 0;
+    let numberOfEasyQuestions = 0;
+    let numberOfNormalQuestions = 0;
+    let numberOfHardQuestions = 0;
     let forPromise = new Promise(async (resolve1, reject1) => {
       for (let question of bank.idQuestions) {
         let promise = new Promise((resolve, reject) => {
@@ -132,7 +132,6 @@ module.exports.postBank = (req, res) => {
       idBank: newBank._id,
     });
 
-    // console.log(newQuestion);
     newQuestion.save();
 
     idQuestions.push(newQuestion._id);
@@ -141,7 +140,6 @@ module.exports.postBank = (req, res) => {
   newBank.idQuestions = idQuestions;
 
   newBank.save();
-  // console.log(newBank);
   res.status(201).send({
     success: true,
     message: "Bank is created",
@@ -173,13 +171,14 @@ module.exports.deleteBank = (req, res) => {
   });
 };
 module.exports.searchBank = (req, res) => {
+  const {userId} = req;
   const { name } = req.body;
   let { page } = req.body;
   page = parseInt(page);
 
   console.log(name);
   console.log(page);
-  Bank.find({}).exec((err, banks) => {
+  Bank.find({idOwner: userId}).exec((err, banks) => {
     let results = [];
     if (banks) {
       for (let bank of banks) {
@@ -215,6 +214,7 @@ module.exports.searchQuestion = (req, res) => {
     },
   ]);
   results.exec((err, questions) => {
+    console.log(questions);
     res.status(200).send({
       success: true,
       message: "Search questions",
