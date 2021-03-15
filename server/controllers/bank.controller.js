@@ -16,7 +16,7 @@ module.exports.getPage = (req, res) => {
   });
 };
 module.exports.getBanks = (req, res) => {
-  const userId = req.userId;
+  const { userId } = req;
   let { page } = req.params;
   let { limitItems } = req.params;
 
@@ -118,12 +118,15 @@ module.exports.postBank = (req, res) => {
   });
 
   for (let question of questions) {
-    let count = 0;
-    // console.log(question.answers.answers);
-    for (let answer of question.answers.answers) {
-      if (answer.isTrue) count++;
-    }
+    // let count = 0;
+    // // console.log(question.answers.answers);
+    // for (let answer of question.answers.answers) {
+    //   if (answer.isTrue) count++;
+    // }
 
+    let count = question.answers.answers.filter(answer => answer.isTrue).length;
+    
+    console.log(count);
     let newQuestion = new Question({
       title: question.title,
       level: question.level,
@@ -171,14 +174,14 @@ module.exports.deleteBank = (req, res) => {
   });
 };
 module.exports.searchBank = (req, res) => {
-  const {userId} = req;
+  const { userId } = req;
   const { name } = req.body;
   let { page } = req.body;
   page = parseInt(page);
 
   console.log(name);
   console.log(page);
-  Bank.find({idOwner: userId}).exec((err, banks) => {
+  Bank.find({ idOwner: userId }).exec((err, banks) => {
     let results = [];
     if (banks) {
       for (let bank of banks) {
@@ -212,13 +215,19 @@ module.exports.searchQuestion = (req, res) => {
         },
       },
     },
+    {
+      $match: {
+        res: {
+          $gt: -1
+        }
+      },
+    },
   ]);
   results.exec((err, questions) => {
-    console.log(questions);
     res.status(200).send({
       success: true,
       message: "Search questions",
-      data: questions.filter((question) => question.res != -1),
+      data: questions,
     });
   });
 };
