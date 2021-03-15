@@ -69,7 +69,7 @@ module.exports.userLogin = (req, res) => {
           success: true,
           message: "Login successfully",
           token: token,
-          expiresIn: "3600000",
+          expiresIn: "7200000",
           username: username,
           name: user.name,
         });

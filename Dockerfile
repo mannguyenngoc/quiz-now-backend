@@ -18,10 +18,10 @@ RUN mkdir /src
 
 RUN npm install nodemon -g
 
-WORKDIR /src
+WORKDIR /src/app
 
 ADD /package.json /src/package.json
-ADD /nodemon.json /src/nodemon.json
+# ADD /nodemon.json /src/nodemon.json
 
 RUN npm install
 
