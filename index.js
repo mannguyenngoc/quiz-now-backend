@@ -2,10 +2,13 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const bodyParser = require("body-parser");
+require('dotenv').config()
+
 const mongoose = require("mongoose");
 // const url = "mongodb://localhost:27017/quiznow";
-const url = "mongodb://database/quiznow";
+// const url = "mongodb://database/quiznow";
 // const url = "mongodb://192.168.0.101:27017/quiznow";
+const url = process.env.MONGO_URL;
 
 const cors = require("cors");
 
@@ -59,7 +62,7 @@ mongoose.connection
 mongoose.set("useFindAndModify", false);
 
 app.get("/", checkIfAuthenticated, (req, res) => {
-  console.log('hello')
+  console.log('haha')
   res.status(200).send({
     isLogin: true,
     message: "This request is authenticated",
