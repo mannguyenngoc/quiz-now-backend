@@ -591,8 +591,9 @@ module.exports.getResultsByIdTestAndTime = (req, res) => {
 };
 module.exports.getResultByIdResult = (req, res) => {
   const { id } = req.params;
+  const { userId } = req;
 
-  Result.findOne({ _id: id }).exec((err, result) => {
+  Result.findOne({ _id: id, idUser: userId }).exec((err, result) => {
     if (result) {
       result.score = result.score * 10;
       res.status(200).send({
