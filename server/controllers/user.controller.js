@@ -1,11 +1,10 @@
 const User = require("../models/User.model");
 
-const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
-const expressJwt = require("express-jwt");
 
 const hashPassword = require("../../functions/hashPassword");
 const comparePassword = require("../../functions/comparePassword");
+
 
 module.exports.postUser = (req, res) => {
   User.findOne({ username: req.body.username }).exec((err, user) => {
@@ -59,20 +58,20 @@ module.exports.postUser = (req, res) => {
 module.exports.userLogin = (req, res) => {
   // console.log(req.headers);
   const { username, password } = req.body;
-
   User.findOne({ username: username }).exec((err, user) => {
     if (user) {
       if (comparePassword(password, user.password)) {
         let token = jwt.sign({ userID: user._id }, "hello-jwt", {
-          expiresIn: "3600000",
+          expiresIn: "7200000",
         });
 
         res.status(200).send({
           success: true,
           message: "Login successfully",
           token: token,
-          expiresIn: "3600000",
-          username: username
+          expiresIn: "7200000",
+          username: username,
+          name: user.name,
         });
 
       } else {

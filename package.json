@@ -4,16 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon -L index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "inspect": "kill-port --port 3000 && node --inspect=0.0.0.0:3000 build/startup.js",
+  "start_watch_inspect": "nodemon --delay 80ms --watch build/ build/startup.js --exec 'npm run inspect'",
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.0.0",
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-jwt": "^6.0.0",
+    "express-session": "^1.17.1",
     "jsonwebtoken": "^8.5.1",
-    "nodemon": "^2.0.7"
+    "mongoose": "^5.11.19",
+    "nodemon": "^2.0.7",
+    "shortid": "^2.2.16"
   }
 }
